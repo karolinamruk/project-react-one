@@ -1,0 +1,14 @@
+@import '../../styles/settings.scss';
+
+.cardForm {
+  justify-content: center;
+  padding: 10px;
+
+  span {
+    margin: 20px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 5px;
+  }
+}
