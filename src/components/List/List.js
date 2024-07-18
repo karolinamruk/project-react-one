@@ -80,6 +80,7 @@ const List = () => {
             icon={column.icon}
             cards={column.cards}
             addCard={addCard}
+            id={column.id}
           />
         ))}
       </section>
