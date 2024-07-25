@@ -4,9 +4,11 @@ import Column from '../Column/Column.js';
 import ColumnForm from '../ColumnForm/ColumnForm';
 // import shortid from 'shortid';
 import { useSelector } from 'react-redux';
+import { getAllColumns } from '../../redux/store';
 
 const List = () => {
-  const columns = useSelector((state) => state.columns);
+  const columns = useSelector(getAllColumns);
+
   // const [columns, setColumns] = useState([
   //   {
   //     id: 1,
