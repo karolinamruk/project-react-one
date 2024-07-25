@@ -31,7 +31,7 @@ const reducer = (state, action) => {
     case 'ADD_CARD':
       return {
         ...state,
-        cards: [...state.cards, { ...action.payload }],
+        cards: [...state.cards, { id: shortid(), ...action.payload }],
       };
 
     case 'UPDATE_SEARCHSTRING':
