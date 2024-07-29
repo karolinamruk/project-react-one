@@ -1,0 +1,40 @@
+@import '../../styles/settings';
+
+.navBar {
+  background-color: darken($color-dark, 3%);
+  //   padding: 15px 0;
+  font-weight: bold;
+}
+
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $color-light;
+  text-decoration: none;
+}
+
+.icon::before {
+  font-size: 24px;
+  color: $color-light;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  //   margin: 0;
+  //   padding: 0;
+
+  li {
+    margin-left: 20px;
+
+    a {
+      color: $color-light;
+      text-decoration: none;
+
+      //   &.active {
+      //     font-weight: bold;
+      //   }
+    }
+  }
+}
