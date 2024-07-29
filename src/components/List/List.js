@@ -4,82 +4,33 @@ import Column from '../Column/Column.js';
 import ColumnForm from '../ColumnForm/ColumnForm';
 // import shortid from 'shortid';
 import { useSelector } from 'react-redux';
-import { getAllColumns } from '../../redux/store';
+// import { getAllColumns } from '../../redux/store';
+import { getListById, getColumnsByList } from '../../redux/store';
+import { useParams, Navigate } from 'react-router';
+import SearchForm from '../SearchForm/SearchForm';
 
 const List = () => {
-  const columns = useSelector(getAllColumns);
+  const { listId } = useParams();
+  const listData = useSelector((state) => getListById(state, listId));
+  const columns = useSelector((state) => getColumnsByList(state, listId));
 
-  // const [columns, setColumns] = useState([
-  //   {
-  //     id: 1,
-  //     title: 'Books',
-  //     icon: 'book',
-  //     cards: [
-  //       { id: 1, title: 'This is Going to Hurt' },
-  //       { id: 2, title: 'Interpreter of Maladies' },
-  //     ],
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Movies',
-  //     icon: 'film',
-  //     cards: [
-  //       { id: 1, title: 'Harry Potter' },
-  //       { id: 2, title: 'Star Wars' },
-  //     ],
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'Games',
-  //     icon: 'gamepad',
-  //     cards: [
-  //       { id: 1, title: 'The Witcher' },
-  //       { id: 2, title: 'Skyrim' },
-  //     ],
-  //   },
-  // ]);
-
-  // const addColumn = (newColumn) => {
-  //   setColumns([
-  //     ...columns,
-  //     {
-  //       id: shortid(),
-  //       title: newColumn.title,
-  //       icon: newColumn.icon,
-  //       cards: [],
-  //     },
-  //   ]);
-  // };
-
-  // const addCard = (newCard, columnId) => {
-  //   const columnsUpdated = columns.map((column) => {
-  //     if (column.id === columnId)
-  //       return {
-  //         ...column,
-  //         cards: [...column.cards, { id: shortid(), title: newCard.title }],
-  //       };
-  //     else return column;
-  //   });
-
-  //   setColumns(columnsUpdated);
-  // };
+  if (!listData) return <Navigate to="/" />;
 
   return (
     <div className={styles.list}>
       <header className={styles.header}>
-        <h2 className={styles.title}>
-          Things to do<span>soon!</span>
-        </h2>
+        <h2 className={styles.title}>{listData ? listData.title : ''}</h2>
       </header>
       <p className={styles.description}>
-        Interesting things I want to check out
+        {listData ? listData.description : ''}
       </p>
+      <SearchForm />
       <section className={styles.columns}>
         {columns.map((column) => (
           <Column key={column.id} {...column} />
         ))}
       </section>
-      <ColumnForm />
+      <ColumnForm listId={listId} />
     </div>
   );
 };
