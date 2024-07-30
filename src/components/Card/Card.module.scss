@@ -11,3 +11,21 @@
   justify-content: space-between;
   font-weight: bold;
 }
+
+.favoriteButton {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: gray;
+
+  // .fa {
+  //   font-size: 20px;
+  // }
+}
+.isFavorite {
+  color: gold;
+}

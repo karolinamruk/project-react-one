@@ -30,6 +30,11 @@ export const updateSearchString = (payload) => ({
   payload,
 });
 
+export const toggleCardFavorite = (id) => ({
+  type: 'TOGGLE_CARD_FAVORITE',
+  payload: id,
+});
+
 export const getListById = ({ lists }, listId) =>
   lists.find((list) => list.id === listId);
 
@@ -37,6 +42,11 @@ export const getColumnsByList = ({ columns }, listId) =>
   columns.filter((column) => column.listId === listId);
 
 export const getAllLists = (state) => state.lists;
+
+export const getAllCards = (state) => state.cards;
+
+export const getFavoriteCards = (state) =>
+  state.cards.filter((card) => card.isFavorite);
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -60,6 +70,17 @@ const reducer = (state, action) => {
 
     case 'UPDATE_SEARCHSTRING':
       return { ...state, searchString: action.payload };
+
+    case 'TOGGLE_CARD_FAVORITE':
+      // console.log('Reducer action:', action);
+      return {
+        ...state,
+        cards: state.cards.map((card) =>
+          card.id === action.payload
+            ? { ...card, isFavorite: !card.isFavorite }
+            : card
+        ),
+      };
 
     default:
       return state;

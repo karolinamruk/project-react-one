@@ -21,9 +21,6 @@ const NavBar = () => {
                 Home
               </NavLink>
             </li>
-            {/* <li>
-              <Link to="/favorite">Favorite</Link>
-            </li> */}
 
             <li>
               <NavLink
@@ -35,10 +32,6 @@ const NavBar = () => {
                 Favorite
               </NavLink>
             </li>
-
-            {/* <li>
-              <Link to="/about">About</Link>
-            </li> */}
 
             <li>
               <NavLink
