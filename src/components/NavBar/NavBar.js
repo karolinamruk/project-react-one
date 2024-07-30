@@ -1,6 +1,5 @@
 import Container from '../Container/Container';
 import styles from './NavBar.module.scss';
-// import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {

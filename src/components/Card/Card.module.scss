@@ -10,9 +10,32 @@
   display: flex;
   justify-content: space-between;
   font-weight: bold;
+  color: $color-dark;
 }
 
 .favoriteButton {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: gray;
+
+  // .fa {
+  //   font-size: 20px;
+  // }
+
+  &:hover {
+    color: gold;
+  }
+}
+.isFavorite {
+  color: gold;
+}
+
+.removeButton {
   background: none;
   border: none;
   position: absolute;
@@ -22,10 +45,7 @@
   cursor: pointer;
   color: gray;
 
-  // .fa {
-  //   font-size: 20px;
-  // }
-}
-.isFavorite {
-  color: gold;
+  &:hover {
+    color: black; /* Zmiana koloru na czarny podczas najechania */
+  }
 }
